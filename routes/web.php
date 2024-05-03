@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\DeviceController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\SaklarController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\SaklarController;
+use App\Http\Controllers\TemperatureController;
+use App\Http\Controllers\UserController;
+use App\Models\Temperature;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,7 @@ use App\Http\Controllers\AuthController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-*/
-
+ */
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
@@ -37,3 +38,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/', 'index')->name('login');
 });
 
+Route::controller(TemperatureController::class)->group(function () {
+    Route::get('/temperature', 'index')->name('temperature');
+});
